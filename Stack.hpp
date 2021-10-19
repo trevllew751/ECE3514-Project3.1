@@ -3,6 +3,8 @@
 #ifndef STACK_HPP
 #define STACK_HPP
 
+#define INITIAL_CAPACITY 100
+
 #include <stdexcept>
 
 #include "abstract_stack.hpp"
@@ -55,7 +57,7 @@ public:
 private:
   /** Index for the top of the stack
    */
-  size_t top;
+  size_t Top;
 
   /** Number of items the stack can hold
    */
