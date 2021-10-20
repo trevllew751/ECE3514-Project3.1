@@ -5,7 +5,7 @@ TEST_CASE("Access the top of the empty stack", "[Stack]")
 {
     Stack<int> s;
 
-    REQUIRE_THROWS_AS(s.top(), std::range_error);
+    REQUIRE_THROWS_AS(s.peek(), std::range_error);
     REQUIRE(s.size() == 0);
     REQUIRE(s.isEmpty());
 }
@@ -15,7 +15,7 @@ TEST_CASE("Test push() method", "[stack]") {
     s.push(10);
     REQUIRE_FALSE(s.isEmpty());
     REQUIRE(s.size() == 1);
-    REQUIRE(s.top() == 10);
+    REQUIRE(s.peek() == 10);
     for (int i = 0; i < 100; i++) {
         s.push(i);
     }
@@ -38,4 +38,18 @@ TEST_CASE("Test pop() method", "[stack]") {
     REQUIRE(s.size() == 1);
     REQUIRE(s.pop());
     REQUIRE(s.size() == 0);
+}
+
+TEST_CASE("Test copy constructor", "[stack]") {
+    Stack<int> s;
+    s.push(1);
+    s.push(2);
+    s.push(3);
+    s.push(4);
+    s.push(5);
+    Stack<int> s1(s);
+    REQUIRE(s1.peek() == s.peek());
+    s.pop();
+    REQUIRE(s1.peek() == 5);
+    REQUIRE(s.peek() == 4);
 }

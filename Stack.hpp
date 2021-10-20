@@ -45,7 +45,7 @@ public:
       @return  Item of T that was on the top of the stack. 
       Throws an exception of type range_error if the stack is empty.
    */
-  const T& top() const throw(std::range_error);
+  const T& peek() const throw(std::range_error);
 
   /** Deletes all entries on the stack.
       @post  Stack contains no items, and the size of the stack is 0.
@@ -55,7 +55,7 @@ public:
 private:
   /** Index for the top of the stack
    */
-  size_t Top;
+  size_t top;
 
   /** Number of items the stack can hold
    */

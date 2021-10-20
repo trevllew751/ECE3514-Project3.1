@@ -13,7 +13,7 @@ public:
   virtual bool pop() = 0;
 
   // return item at the top of the stack
-  virtual const T& top() const = 0;
+  virtual const T& peek() const = 0;
 
   // returns true if the stack is empty
   virtual bool isEmpty() const = 0;
