@@ -3,8 +3,6 @@
 #ifndef STACK_HPP
 #define STACK_HPP
 
-#define INITIAL_CAPACITY 100
-
 #include <stdexcept>
 
 #include "abstract_stack.hpp"

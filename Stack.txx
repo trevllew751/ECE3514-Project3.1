@@ -1,5 +1,7 @@
 #include "Stack.hpp"
 
+#define INITIAL_CAPACITY 100
+
 template<typename T>
 Stack<T>::Stack() {
     items = new T[INITIAL_CAPACITY];
@@ -17,7 +19,7 @@ Stack<T>::Stack(const Stack &rhs) {
     Top = rhs.Top;
     capacity = rhs.capacity;
     items = new T[rhs.capacity];
-    std::memcpy(items, rhs.items, sizeof(T) * rhs.Top);
+    std::copy(rhs.items, rhs.items + rhs.Top, items);
 }
 
 template<typename T>
@@ -36,9 +38,6 @@ bool Stack<T>::push(const T &newItem) {
         capacity *= 2;
         T *temp = new T[capacity];
         std::copy(items, items + Top, temp);
-//        for (unsigned int i = 0; i < Top; i++) {
-//            temp[i] = items[i];
-//        }
         delete[] items;
         items = temp;
     }
